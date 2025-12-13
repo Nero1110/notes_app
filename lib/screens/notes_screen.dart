@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
+import 'package:notes_app/widgets/notes_list.dart';
 
 class NotesScreen extends StatelessWidget {
   const NotesScreen({super.key});
@@ -11,11 +12,11 @@ class NotesScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomAppBar(),
+            NotesListWidget(),
           ],
         ),
       ),
     );
   }
 }
-
 
