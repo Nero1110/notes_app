@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -7,12 +8,13 @@ class CustomButton extends StatelessWidget {
   }) : _formkey = formkey;
 
   final GlobalKey<FormState> _formkey;
+ 
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff53EBD6),
+        backgroundColor: kPrimaryColor,
         fixedSize: Size(380, 45),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(7),
