@@ -5,9 +5,11 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.hinttext,
     required this.maxlines,
+    required this.controller,
   });
   final int maxlines;
   final String hinttext;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,9 +21,16 @@ class CustomTextField extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 45),
               child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "This field is required";
+                  }
+                },
+                controller: controller,
                 maxLines: maxlines,
                 style: TextStyle(color: Colors.white, fontSize: 15),
                 decoration: InputDecoration(
+                  errorStyle: TextStyle(color: Colors.red,fontSize: 10),
                   hintText: hinttext,
                   hintStyle: TextStyle(color: Color(0xff53EBD6), fontSize: 18),
                   border: OutlineInputBorder(

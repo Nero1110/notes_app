@@ -12,7 +12,9 @@ class NotesScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            
             context: context,
+            isScrollControlled: true,
             builder: (context) {
               return AddNoteBottomSheet();
             },
@@ -28,6 +30,3 @@ class NotesScreen extends StatelessWidget {
     );
   }
 }
-
-
-
