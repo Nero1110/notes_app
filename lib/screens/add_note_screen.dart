@@ -15,10 +15,11 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
   final TextEditingController contentController = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
-
+ AutovalidateMode autoValidateMode =AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Form(
+      autovalidateMode:autoValidateMode ,
       key: _formkey,
       child: Padding(
         padding: EdgeInsetsGeometry.only(
@@ -40,7 +41,20 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
 
               Padding(
                 padding: const EdgeInsets.only(top: 100, bottom: 20),
-                child: CustomButton(formkey: _formkey),
+                child: CustomButton(formkey: _formkey,onPressed:  () {
+        if (_formkey.currentState!.validate()) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Note is added successfully')),
+          );
+          Navigator.pop(context);
+        } else {
+          autoValidateMode=AutovalidateMode.always;
+          setState(() {
+            
+          });
+      
+        }
+      },),
               ),
             ],
           ),

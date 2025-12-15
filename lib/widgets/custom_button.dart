@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
+  CustomButton({
     super.key,
     required GlobalKey<FormState> formkey,
+    required this.onPressed
   }) : _formkey = formkey;
 
   final GlobalKey<FormState> _formkey;
- 
+ void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +21,10 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadiusGeometry.circular(7),
         ),
       ),
-      onPressed: () {
-        if (_formkey.currentState!.validate()) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Note is added successfully'),
-            ),
-          );
-          Navigator.pop(context);
-        }
-      },
-      child: Text(
-        "Add",
-        style: TextStyle(color: Colors.black, fontSize: 18),
-      ),
+      onPressed:onPressed,
+      child: Text("Add", style: TextStyle(color: Colors.black, fontSize: 18)),
     );
   }
 }
+
+
