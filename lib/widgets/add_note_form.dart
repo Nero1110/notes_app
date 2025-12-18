@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
@@ -21,6 +21,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
+    List<Color> colors=[Colors.blue,Colors.red,Colors.green,Colors.amber,Colors.orange]..shuffle(); 
     return Form(
       autovalidateMode: autoValidateMode,
       key: _formkey,
@@ -48,12 +49,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   var notemodel = NoteModel(
                     title: titleController.text,
                     content: contentController.text,
-                    color: Colors.blue.value,
+                    color:colors[2].value ,
                     date: formatted,
                   );
                   context.read<AddNoteCubit>().addNote(notemodel: notemodel);
-
-                  
                   
                 } else {
                   setState(() {
